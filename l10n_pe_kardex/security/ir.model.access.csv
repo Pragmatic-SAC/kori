@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_kardex_status,kardex.status,l10n_pe_kardex.model_kardex_status,base.group_user,1,1,1,1
+access_kardex_move,kardex,l10n_pe_kardex.model_kardex,base.group_user,1,1,1,1
+access_kardex_move_detail,kardex.line,l10n_pe_kardex.model_kardex_line,base.group_user,1,1,1,1
+access_pragmatic_establishment,pragmatic.establishment,l10n_pe_kardex.model_pragmatic_establishment,base.group_user,1,1,1,1

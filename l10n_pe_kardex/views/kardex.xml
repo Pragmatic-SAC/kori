@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Campos-->
+        <record id="kardex_tree" model="ir.ui.view">
+            <field name="name">Kardex</field>
+            <field name="model">kardex</field>
+            <field name="arch" type="xml">
+                <tree string="Kardex" editable="bottom">
+                    <field name="name"/>
+                    <field name="type_kardex"/>
+                    <field name="establishment"/>
+                    <field name="company_id"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="progress_state" readonly="1" invisible="1"/>
+                    <button name="execute_kardex" string="Ejecutar" type="object" class="oe_highlight"/>
+                    <field name="progress_state" widget="progressbar"/>
+                    <button class="oe_stat_button" type="object" string="Export (XLSX)" name="export_excel"
+                            icon="fa-file-excel-o"/>
+                    <!--                    attrs="{'invisible': [('progress_state','=',0)]}"-->
+<!--                    <button class="oe_stat_button" type="object" string="Export (TXT)" name="export_txt"-->
+<!--                            icon="fa-file"/>-->
+                    <field name="state_ids" widget="many2many_tags" options="{'color_field': 'color'}" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        Action-->
+        <record id="kardex_move_action" model="ir.actions.act_window">
+            <field name="name">Kardex</field>
+            <field name="res_model">kardex</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <menuitem name="Kardex" id="menu_kardex_move"
+                  parent="stock.menu_stock_root" sequence="99" groups="l10n_pe_kardex.kardex_inventory_group_user"/>
+        <menuitem name="Kardex Inventory" action="kardex_move_action"
+                  id="menu_Kardex_move_menu" parent="menu_kardex_move"/>
+
+    </data>
+</odoo>

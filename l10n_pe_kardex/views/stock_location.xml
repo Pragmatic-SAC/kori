@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pragmatic_stock_location" model="ir.ui.view">
+        <field name="name">stock.location.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_form"/>
+        <field name="arch" type="xml">
+            <field name="usage" position="after">
+                <field name="show_field" invisible="1"/>
+                <field name="establishment" options="{'no_create': True, 'no_create_edit':True,'no_open': True}" attrs="{'invisible': [('show_field', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+    <record id="pragmatic_stock_location_tree2" model="ir.ui.view">
+        <field name="name">stock.location.inherit</field>
+        <field name="model">stock.location</field>
+        <field name="inherit_id" ref="stock.view_location_tree2"/>
+        <field name="arch" type="xml">
+            <field name="usage" position="before">
+                <field name="show_field" invisible="1"/>
+                <field name="establishment" attrs="{'invisible': [('show_field', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pragmatic_establishment_tree" model="ir.ui.view">
+        <field name="name">pragmatic.establishment.tree</field>
+        <field name="model">pragmatic.establishment</field>
+        <field name="arch" type="xml">
+            <tree string="Establishment">
+                <field name="name"/>
+                <field name="address"/>
+                <field name="code"/>
+                <field name="sunat_code"/>
+                <field name="company_id"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+    <record id="pragmatic_establishment_form" model="ir.ui.view">
+        <field name="name">pragmatic.establishment.form</field>
+        <field name="model">pragmatic.establishment</field>
+        <field name="arch" type="xml">
+            <form string="Establishment">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="company_id"
+                                   options="{'no_create': True, 'no_create_edit':True,'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="address"/>
+                            <field name="sunat_code"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="pragmatic_establishment_search" model="ir.ui.view">
+        <field name="name">pragmatic.establishment.search</field>
+        <field name="model">pragmatic.establishment</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="active" string="Active" domain="[('active','=',True)]"
+                        help="Show active"/>
+                <filter name="inactive" string="Archived" domain="[('active','=',False)]"
+                        help="Show archived"/>
+            </search>
+        </field>
+    </record>
+    <record id="pragmatic_establishment_action" model="ir.actions.act_window">
+        <field name="name">Establishment</field>
+        <field name="res_model">pragmatic.establishment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="pragmatic_establishment_search"/>
+        <field name="domain"></field>
+    </record>
+    <menuitem id="pragmatic_establishment_menu"
+              sequence="100"
+              name="Establishment"
+              groups="l10n_pe_kardex.kardex_inventory_group_user_establishment"
+              parent="stock.menu_stock_general_settings"
+              action="pragmatic_establishment_action"/>
+</odoo>
